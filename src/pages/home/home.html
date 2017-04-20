@@ -7,5 +7,6 @@
 </ion-header>
 
 <ion-content padding>
-  <timer #timer startTime="30"></timer>
+  <ion-input text-left type="text" [(ngModel)]="timeModel" pattern="[0-9 ]*" [ngModelOptions]="{standalone: true}"></ion-input>
+  <timer #timer [startTime]="startTime"></timer>
 </ion-content>

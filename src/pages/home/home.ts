@@ -9,7 +9,19 @@ import { Timer } from '../../components/timer'
 export class HomePage {
 
   @ViewChild(Timer) timer: Timer;
+  startTime: number;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) {
+    this.startTime = 20;
+  }
+
+  get timeModel() {
+    return this.startTime;
+  }
+
+  set timeModel(value) {
+    this.startTime = value;
+    this.timer.setTime(this.startTime);
+  }
 
 }

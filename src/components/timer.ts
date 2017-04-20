@@ -37,6 +37,11 @@ export class Timer implements OnInit {
     this.timeStr = this.convertTimeToStr(this.remainingTime);
   }
 
+  setTime(value){
+    this.startTime = value;
+    this.init();
+  }
+
   getIsOver() {
     return this.isOver;
   }
