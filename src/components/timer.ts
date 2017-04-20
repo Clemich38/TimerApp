@@ -11,7 +11,7 @@ declare var Chart: any;
 export class Timer implements OnInit {
 
   @Input() startTime: number;
-  // public timer: ITimer;
+  
   time: number;
   startTimer: boolean;
   isStarted: boolean;
@@ -87,12 +87,3 @@ export class Timer implements OnInit {
 
 
 }
-
-// export interface ITimer {
-//   time: number;
-//   remainingTime: number;
-//   startTimer: boolean;
-//   isStarted: boolean;
-//   isOver: boolean;
-//   timeStr: string;
-// }
