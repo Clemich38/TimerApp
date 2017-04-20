@@ -10,8 +10,14 @@ declare var Chart: any;
 
 export class Timer implements OnInit {
 
-  @Input() time: number;
-  public timer: ITimer;
+  @Input() startTime: number;
+  // public timer: ITimer;
+  time: number;
+  startTimer: boolean;
+  isStarted: boolean;
+  isOver: boolean;
+  remainingTime: number;
+  timeStr: string;
 
   public constructor() {}
 
@@ -20,32 +26,29 @@ export class Timer implements OnInit {
   }
 
   init(){
-    if (!this.time)
-      this.time = 0;
+    if (!this.startTime)
+      this.startTime = 0;
 
-    this.timer = <ITimer>{
-      time: this.time,
-      startTimer: false,
-      isStarted: false,
-      isOver: false,
-      remainingTime: this.time
-    };
-
-    this.timer.timeStr = this.convertTimeToStr(this.timer.remainingTime);
+    this.time = this.startTime;
+    this.startTimer = false;
+    this.isStarted = false;
+    this.isOver = false;
+    this.remainingTime = this.startTime;
+    this.timeStr = this.convertTimeToStr(this.remainingTime);
   }
 
-  isOver() {
-    return this.timer.isOver;
+  getIsOver() {
+    return this.isOver;
   }
 
   start() {
-    this.timer.isStarted = true;
-    this.timer.startTimer = true;
+    this.isStarted = true;
+    this.startTimer = true;
     this.timerTick();
   }
 
   pause() {
-    this.timer.startTimer = false;
+    this.startTimer = false;
   }
 
   resume() {
@@ -54,16 +57,16 @@ export class Timer implements OnInit {
 
   timerTick() {
     setTimeout(() => {
-      if (!this.timer.startTimer)
+      if (!this.startTimer)
         return;
 
-      this.timer.remainingTime --;
-      this.timer.timeStr = this.convertTimeToStr(this.timer.remainingTime);
-      if (this.timer.remainingTime > 0) {
+      this.remainingTime --;
+      this.timeStr = this.convertTimeToStr(this.remainingTime);
+      if (this.remainingTime > 0) {
         this.timerTick();
       }
       else {
-        this.timer.isOver = true;
+        this.isOver = true;
       }
     }, 1000);
   }
@@ -85,11 +88,11 @@ export class Timer implements OnInit {
 
 }
 
-export interface ITimer {
-  time: number;
-  remainingTime: number;
-  startTimer: boolean;
-  isStarted: boolean;
-  isOver: boolean;
-  timeStr: string;
-}
+// export interface ITimer {
+//   time: number;
+//   remainingTime: number;
+//   startTimer: boolean;
+//   isStarted: boolean;
+//   isOver: boolean;
+//   timeStr: string;
+// }

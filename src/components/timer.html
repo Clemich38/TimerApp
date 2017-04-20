@@ -1,21 +1,21 @@
-<div *ngIf="timer">
+<div>
   <ion-item class="no-bottom-border item">
-    <button ion-button *ngIf="time && time > 0" large full clear class="timer-button timer-text">{{timer.timeStr}}</button>
+    <button ion-button *ngIf="startTime && startTime > 0" large full clear class="timer-button timer-text">{{timeStr}}</button>
   </ion-item>
-  <ion-item class="no-bottom-border" *ngIf="time && time > 0">
-    <button ion-button icon-left clear color="danger" small (click)="init()" item-left *ngIf="!timer.startTimer && (timer.isStarted || timer.isOver) || timer.isOver">
+  <ion-item class="no-bottom-border" *ngIf="startTime && startTime > 0">
+    <button ion-button icon-left clear color="danger" small (click)="init()" item-left *ngIf="!startTimer && (isStarted || isOver) || isOver">
       <ion-icon name="refresh"></ion-icon>
         Reset
     </button>
-    <button ion-button icon-left clear small color="primary" (click)="pause()" item-right *ngIf="timer.startTimer && timer.isStarted && !timer.isOver">
+    <button ion-button icon-left clear small color="primary" (click)="pause()" item-right *ngIf="startTimer && isStarted && !isOver">
       <ion-icon name="pause"></ion-icon>
         Pause
     </button>
-    <button ion-button icon-left clear small color="primary" (click)="resume()" item-right *ngIf="!timer.startTimer && timer.isStarted && !timer.isOver">
+    <button ion-button icon-left clear small color="primary" (click)="resume()" item-right *ngIf="!startTimer && isStarted && !isOver">
       <ion-icon name="play"></ion-icon>
         Resume
     </button>
-    <button ion-button icon-left clear small color="primary" (click)="start()" item-right *ngIf="!timer.isStarted">
+    <button ion-button icon-left clear small color="primary" (click)="start()" item-right *ngIf="!isStarted">
       <ion-icon name="play"></ion-icon>
         Start
     </button>
