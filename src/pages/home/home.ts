@@ -12,9 +12,4 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {}
 
-  // ngOnInit() {
-  //   setTimeout(() => {
-  //     this.timer.start();
-  //   }, 1000)
-  // }
 }
