@@ -77,16 +77,21 @@ export class Timer implements OnInit {
   }
 
   convertTimeToStr(time: number) {
+    var hoursStr = '';
+    var minutesStr = '';
+    var secondsStr = '';
+
+    // Convert time in sconds + minutes + hours
     var secNb = parseInt(time.toString(), 10);
     var hoursNb = Math.floor(secNb / 3600);
     var minutesNb = Math.floor((secNb - (hoursNb * 3600)) / 60);
     var secondsNb = secNb - (hoursNb * 3600) - (minutesNb * 60);
-    var hoursStr = '';
-    var minutesStr = '';
-    var secondsStr = '';
+
+    // Format the time output string (01:34:00)
     hoursStr = (hoursNb < 10) ? "0" + hoursNb : hoursNb.toString();
     minutesStr = (minutesNb < 10) ? "0" + minutesNb : minutesNb.toString();
     secondsStr = (secondsNb < 10) ? "0" + secondsNb : secondsNb.toString();
+
     return hoursStr + ':' + minutesStr + ':' + secondsStr;
   }
 
