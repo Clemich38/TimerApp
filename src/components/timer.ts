@@ -95,5 +95,4 @@ export class Timer implements OnInit {
     return hoursStr + ':' + minutesStr + ':' + secondsStr;
   }
 
-
 }

@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-input text-left type="text" [(ngModel)]="timeModel" pattern="[0-9 ]*" [ngModelOptions]="{standalone: true}"></ion-input>
-  <timer #timer [startTime]="startTime"></timer>
+  <ion-item>
+    <ion-label floating>Time :</ion-label>
+    <ion-input text-left type="text" [(ngModel)]="timeModel" pattern="[0-9 ]*" [ngModelOptions]="{standalone: true}"></ion-input>
+  </ion-item>
+  <timer padding #timer [startTime]="startTime"></timer>
 </ion-content>
